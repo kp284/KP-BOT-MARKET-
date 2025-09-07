@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KP BOT MARKET - Premium Telegram Bots</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7e57c2;
+            --primary-dark: #673ab7;
+            --secondary: #ff4081;
+            --accent: #00e5ff;
+            --dark: #121212;
+            --dark-light: #1e1e1e;
+            --card-dark: #1d1d1d;
+            --text-primary: #e0e0e0;
+            --text-secondary: #aaaaaa;
+            --success: #00c853;
+            --warning: #ffab00;
+            --danger: #ff5252;
+            --whatsapp: #25D366;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(126, 87, 194, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 85% 30%, rgba(255, 64, 129, 0.1) 0%, transparent 20%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(126, 87, 194, 0.2) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 52px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        /* Category Filter */
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .category-btn {
+            padding: 12px 24px;
+            background-color: var(--dark-light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            border-color: transparent;
+        }
+
+        /* Bot Grid */
+        .bot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Bot Card */
+        .bot-card {
+            background-color: var(--card-dark);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .bot-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(126, 87, 194, 0.3);
+        }
+
+        .bot-card-header {
+            padding: 25px;
+            background: linear-gradient(90deg, var(--primary-dark) 0%, var(--card-dark) 100%);
+            color: white;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .bot-card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .bot-card-header h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .bot-card-price {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-top: 10px;
+        }
+
+        .bot-card-body {
+            padding: 25px;
+        }
+
+        .bot-card-desc {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .bot-card-features {
+            margin-bottom: 20px;
+        }
+
+        .bot-card-features li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .bot-card-features li i {
+            color: var(--success);
+            margin-right: 12px;
+            font-size: 14px;
+            background: rgba(0, 200, 83, 0.1);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bot-card-footer {
+            padding: 0 25px 25px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            flex: 1;
+            min-width: 120px;
+            font-size: 14px;
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        .btn-demo {
+            background: rgba(126, 87, 194, 0.2);
+            color: var(--primary);
+            border: 1px solid rgba(126, 87, 194, 0.3);
+        }
+
+        .btn-demo:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(126, 87, 194, 0.3);
+        }
+
+        .btn-buy {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .btn-buy:hover {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(126, 87, 194, 0.4);
+        }
+
+        .btn-direct {
+            background: linear-gradient(135deg, var(--secondary) 0%, #f50057 100%);
+            color: white;
+        }
+
+        .btn-direct:hover {
+            background: linear-gradient(135deg, #f50057 0%, #c51162 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 64, 129, 0.4);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, var(--whatsapp) 0%, #128C7E 100%);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Script Bot Notice */
+        .script-notice {
+            background-color: rgba(255, 171, 0, 0.1);
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            font-size: 14px;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Section Styles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 38px;
+            color: var(--text-primary);
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        section:nth-child(even) {
+            background-color: rgba(18, 18, 18, 0.7);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(to bottom, var(--dark) 0%, var(--dark-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 20%, rgba(126, 87, 194, 0.15) 0%, transparent 40%);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-card {
+            background: rgba(30, 30, 30, 0.7);
+            padding: 30px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(126, 87, 194, 0.3);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background: var(--card-dark);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question {
+            padding: 20px;
+            background: linear-gradient(90deg, var(--primary-dark) 0%, var(--card-dark) 100%);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .faq-answer {
+            padding: 20px;
+            background-color: var(--card-dark);
+            display: none;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 22px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        .footer-column p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 18px;
+        }
+
+        .social-icons a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .bot-card-footer {
+                flex-direction: column;
+            }
+            
+            .btn {
+                margin-bottom: 10px;
+                width: 100%;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Particle Background Effect */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(126, 87, 194, 0.3);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-robot"></i> KP BOT MARKET
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#tbc-bots">TBC Bots</a></li>
+                    <li><a href="#script-bots">Script Bots</a></li>
+                    <li><a href="#websites">Websites</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Premium Telegram Bots & Services</h1>
+            <p>Discover our collection of high-quality bots designed to enhance your Telegram experience and automate your tasks. Get the best bots at competitive prices with excellent support.</p>
+            <div class="hero-buttons">
+                <a href="#tbc-bots" class="btn btn-buy"><i class="fas fa-eye"></i> Explore Bots</a>
+                <a href="https://wa.me/6285783858712" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <div class="container">
+        <div class="category-filter">
+            <button class="category-btn active" data-category="all">All Bots</button>
+            <button class="category-btn" data-category="tbc">TBC Bots</button>
+            <button class="category-btn" data-category="script">Script Bots</button>
+            <button class="category-btn" data-category="website">Websites</button>
+        </div>
+    </div>
+
+    <!-- TBC Bots Section -->
+    <section id="tbc-bots" class="animate">
+        <div class="container">
+            <div class="section-title">
+                <h2>TBC BOTS</h2>
+            </div>
+            <div class="bot-grid">
+                <!-- Bot Maker -->
+                <div class="bot-card" data-category="tbc">
+                    <div class="bot-card-header">
+                        <span class="bot-card-badge">Popular</span>
+                        <h3>🤖 Bot Maker</h3>
+                        <div class="bot-card-price">₹399</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">Automatic Bot Maker - Creates clone bots automatically</p>
+                        <ul class="bot-card-features">
+                            <li><i class="fas fa-check"></i> Creates bot clones</li>
+                            <li><i class="fas fa-check"></i> Automatic setup</li>
+                            <li><i class="fas fa-check"></i> Easy to use</li>
+                        </ul>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://t.me/kpbotmaker" class="btn btn-demo"><i class="fas fa-eye"></i> Demo</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</a>
+                        <a href="https://t.me/KP_BOT_MARKET_BOT" class="btn btn-direct"><i class="fas fa-bolt"></i> Direct</a>
+                    </div>
+                </div>
+
+                <!-- TBC SMM Bot -->
+                <div class="bot-card" data-category="tbc">
+                    <div class="bot-card-header">
+                        <h3>💸 TBC SMM Bot</h3>
+                        <div class="bot-card-price">₹199</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">SMM Bot with real-time order tracking and auto order system</p>
+                        <ul class="bot-card-features">
+                            <li><i class="fas fa-check"></i> Real-time order tracking</li>
+                            <li><i class="fas fa-check"></i> Auto order system</li>
+                            <li><i class="fas fa-check"></i> Customizable</li>
+                        </ul>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://t.me/KP_GROW_BOT" class="btn btn-demo"><i class="fas fa-eye"></i> Demo</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</a>
+                        <a href="https://t.me/KP_BOT_MARKET_BOT" class="btn btn-direct"><i class="fas fa-bolt"></i> Direct</a>
+                    </div>
+                </div>
+
+                <!-- Star Bot -->
+                <div class="bot-card" data-category="tbc">
+                    <div class="bot-card-header">
+                        <h3>⭐ Star Bot</h3>
+                        <div class="bot-card-price">₹170</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">All Themes Included - Advanced features for managing your bot</p>
+                        <ul class="bot-card-features">
+                            <li><i class="fas fa-check"></i> Advanced broadcast management</li>
+                            <li><i class="fas fa-check"></i> Withdrawal management</li>
+                            <li><i class="fas fa-check"></i> IP & number verification</li>
+                        </ul>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://t.me/kpmakerbot" class="btn btn-demo"><i class="fas fa-eye"></i> Demo</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</a>
+                        <a href="https://t.me/KP_BOT_MARKET_BOT" class="btn btn-direct"><i class="fas fa-bolt"></i> Direct</a>
+                    </div>
+                </div>
+
+                <!-- Wallet Bot -->
+                <div class="bot-card" data-category="tbc">
+                    <div class="bot-card-header">
+                        <h3>💰 Wallet Bot</h3>
+                        <div class="bot-card-price">₹170</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">All Themes Included - Advanced wallet management system</p>
+                        <ul class="bot-card-features">
+                            <li><i class="fas fa-check"></i> Advance gift card management</li>
+                            <li><i class="fas fa-check"></i> Low fund notification</li>
+                            <li><i class="fas fa-check"></i> User lifetime withdraw limit</li>
+                        </ul>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://t.me/kpmakerbot" class="btn btn-demo"><i class="fas fa-eye"></i> Demo</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</a>
+                        <a href="https://t.me/KP_BOT_MARKET_BOT" class="btn btn-direct"><i class="fas fa-bolt"></i> Direct</a>
+                    </div>
+                </div>
+
+                <!-- UPI Bot -->
+                <div class="bot-card" data-category="tbc">
+                    <div class="bot-card-header">
+                        <h3>📈 UPI Bot</h3>
+                        <div class="bot-card-price">₹170</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">All Themes Included - UPI payment management system</p>
+                        <ul class="bot-card-features">
+                            <li><i class="fas fa-check"></i> UPI payment integration</li>
+                            <li><i class="fas fa-check"></i> Transaction management</li>
+                            <li><i class="fas fa-check"></i> Secure payment processing</li>
+                        </ul>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://t.me/kpmakerbot" class="btn btn-demo"><i class="fas fa-eye"></i> Demo</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</a>
+                        <a href="https://t.me/KP_BOT_MARKET_BOT" class="btn btn-direct"><i class="fas fa-bolt"></i> Direct</a>
+                    </div>
+                </div>
+
+                <!-- TG Premium Bot -->
+                <div class="bot-card" data-category="tbc">
+                    <div class="bot-card-header">
+                        <h3>⚡ TG Premium Bot</h3>
+                        <div class="bot-card-price">₹170</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">All Themes Included - Premium Telegram features</p>
+                        <ul class="bot-card-features">
+                            <li><i class="fas fa-check"></i> Advanced broadcast management</li>
+                            <li><i class="fas fa-check"></i> Withdrawal management</li>
+                            <li><i class="fas fa-check"></i> Bounce section</li>
+                        </ul>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://t.me/kpmakerbot" class="btn btn-demo"><i class="fas fa-eye"></i> Demo</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</a>
+                        <a href="https://t.me/KP_BOT_MARKET_BOT" class="btn btn-direct"><i class="fas fa-bolt"></i> Direct</a>
+                    </div>
+                </div>
+
+                <!-- Crypto Bot -->
+                <div class="bot-card" data-category="tbc">
+                    <div class="bot-card-header">
+                        <span class="bot-card-badge">New</span>
+                        <h3>♎ Crypto Bot</h3>
+                        <div class="bot-card-price">₹199</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">Xrocet Theme - Crypto currency management system</p>
+                        <ul class="bot-card-features">
+                            <li><i class="fas fa-check"></i> Auto + manual pay system</li>
+                            <li><i class="fas fa-check"></i> Ultra admin panel</li>
+                            <li><i class="fas fa-check"></i> IP verification</li>
+                        </ul>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://t.me/kpmakerbot" class="btn btn-demo"><i class="fas fa-eye"></i> Demo</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</a>
+                        <a href="https://t.me/KP_BOT_MARKET_BOT" class="btn btn-direct"><i class="fas fa-bolt"></i> Direct</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script Bots Section -->
+    <section id="script-bots" class="animate">
+        <div class="container">
+            <div class="section-title">
+                <h2>SCRIPT BOTS</h2>
+            </div>
+            <div class="bot-grid">
+                <!-- File Store Bot -->
+                <div class="bot-card" data-category="script">
+                    <div class="bot-card-header">
+                        <h3>🏖️ File Store Bot</h3>
+                        <div class="bot-card-price">₹349</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">File storage and management bot for Telegram</p>
+                        <div class="script-notice">
+                            💻 Script Bots don't have a demo, because I need to start them first.
+                            📩 So message me, I'll show you the demo.
+                            💰 And if you feel the price is too high, I can reduce it.
+                        </div>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://wa.me/6285783858712" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</a>
+                    </div>
+                </div>
+
+                <!-- Movie Bot -->
+                <div class="bot-card" data-category="script">
+                    <div class="bot-card-header">
+                        <h3>🎬 Movie Bot</h3>
+                        <div class="bot-card-price">₹349</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">Movie and web series search bot with download links</p>
+                        <ul class="bot-card-features">
+                            <li><i class="fas fa-check"></i> Search by name</li>
+                            <li><i class="fas fa-check"></i> Multiple quality options</li>
+                            <li><i class="fas fa-check"></i> IMDb info</li>
+                            <li><i class="fas fa-check"></i> Clone system</li>
+                        </ul>
+                        <div class="script-notice">
+                            💻 Script Bots don't have a demo, because I need to start them first.
+                            📩 So message me, I'll show you the demo.
+                            💰 And if you feel the price is too high, I can reduce it.
+                        </div>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://wa.me/6285783858712" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</a>
+                    </div>
+                </div>
+
+                <!-- Hosting Bot -->
+                <div class="bot-card" data-category="script">
+                    <div class="bot-card-header">
+                        <h3>☠️ Hosting Bot</h3>
+                        <div class="bot-card-price">₹449</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">Host Termux bots automatically with this hosting solution</p>
+                        <ul class="bot-card-features">
+                            <li><i class="fas fa-check"></i> Hosts .py & .js scripts</li>
+                            <li><i class="fas fa-check"></i> File management</li>
+                            <li><i class="fas fa-check"></i> Advanced admin panel</li>
+                        </ul>
+                        <div class="script-notice">
+                            💻 Script Bots don't have a demo, because I need to start them first.
+                            📩 So message me, I'll show you the demo.
+                            💰 And if you feel the price is too high, I can reduce it.
+                        </div>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://t.me/KP_HOSTING_BOT" class="btn btn-demo"><i class="fas fa-eye"></i> Demo</a>
+                        <a href="https://wa.me/6285783858712" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</a>
+                    </div>
+                </div>
+
+                <!-- Poll Bot -->
+                <div class="bot-card" data-category="script">
+                    <div class="bot-card-header">
+                        <h3>🥶 Advance Poll Bot</h3>
+                        <div class="bot-card-price">₹219</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">Advanced poll system perfect for giveaways</p>
+                        <ul class="bot-card-features">
+                            <li><i class="fas fa-check"></i> Channel join requirement</li>
+                            <li><i class="fas fa-check"></i> Auto vote removal</li>
+                            <li><i class="fas fa-check"></i> Notification system</li>
+                        </ul>
+                        <div class="script-notice">
+                            💻 Script Bots don't have a demo, because I need to start them first.
+                            📩 So message me, I'll show you the demo.
+                            💰 And if you feel the price is too high, I can reduce it.
+                        </div>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://t.me/patelkrish_99" class="btn btn-demo"><i class="fas fa-eye"></i> Demo</a>
+                        <a href="https://wa.me/6285783858712" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</a>
+                    </div>
+                </div>
+
+                <!-- JoinGuard Bot -->
+                <div class="bot-card" data-category="script">
+                    <div class="bot-card-header">
+                        <h3>🛡️ JoinGuard Bot</h3>
+                        <div class="bot-card-price">₹199</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">Channel join verification system for groups</p>
+                        <ul class="bot-card-features">
+                            <li><i class="fas fa-check"></i> Channel join requirement</li>
+                            <li><i class="fas fa-check"></i> Easy join button</li>
+                            <li><i class="fas fa-check"></i> Advanced admin panel</li>
+                        </ul>
+                        <div class="script-notice">
+                            💻 Script Bots don't have a demo, because I need to start them first.
+                            📩 So message me, I'll show you the demo.
+                            💰 And if you feel the price is too high, I can reduce it.
+                        </div>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://t.me/patelkrish_99" class="btn btn-demo"><i class="fas fa-eye"></i> Demo</a>
+                        <a href="https://wa.me/6285783858712" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</a>
+                    </div>
+                </div>
+
+                <!-- Button Post Maker Bot -->
+                <div class="bot-card" data-category="script">
+                    <div class="bot-card-header">
+                        <h3>⚡ Button Post Maker Bot</h3>
+                        <div class="bot-card-price">₹199</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">Add custom buttons under channel posts</p>
+                        <ul class="bot-card-features">
+                            <li><i class="fas fa-check"></i> Custom buttons</li>
+                            <li><i class="fas fa-check"></i> Unlimited buttons</li>
+                            <li><i class="fas fa-check"></i> Advanced admin panel</li>
+                        </ul>
+                        <div class="script-notice">
+                            💻 Script Bots don't have a demo, because I need to start them first.
+                            📩 So message me, I'll show you the demo.
+                            💰 And if you feel the price is too high, I can reduce it.
+                        </div>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://t.me/patelkrish_99" class="btn btn-demo"><i class="fas fa-eye"></i> Demo</a>
+                        <a href="https://wa.me/6285783858712" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</a>
+                    </div>
+                </div>
+
+                <!-- Shorten Link Bot -->
+                <div class="bot-card" data-category="script">
+                    <div class="bot-card-header">
+                        <h3>🎙️ Shorten Link Bot</h3>
+                        <div class="bot-card-price">₹150</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">Link shortening with real-time click tracking</p>
+                        <ul class="bot-card-features">
+                            <li><i class="fas fa-check"></i> Link shortening</li>
+                            <li><i class="fas fa-check"></i> Click tracking</li>
+                            <li><i class="fas fa-check"></i> Perfect for marketing</li>
+                        </ul>
+                        <div class="script-notice">
+                            💻 Script Bots don't have a demo, because I need to start them first.
+                            📩 So message me, I'll show you the demo.
+                            💰 And if you feel the price is too high, I can reduce it.
+                        </div>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://t.me/patelkrish_99" class="btn btn-demo"><i class="fas fa-eye"></i> Demo</a>
+                        <a href="https://wa.me/6285783858712" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Websites Section -->
+    <section id="websites" class="animate">
+        <div class="container">
+            <div class="section-title">
+                <h2>WEBSITES</h2>
+            </div>
+            <div class="bot-grid">
+                <!-- Custom Website -->
+                <div class="bot-card" data-category="website">
+                    <div class="bot-card-header">
+                        <h3>🌐 Custom Website for Bots</h3>
+                        <div class="bot-card-price">Low Price Offer</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">Custom websites for your bots at affordable prices</p>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://wa.me/6285783858712" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Inquire</a>
+                    </div>
+                </div>
+
+                <!-- Instagram Phishing Page -->
+                <div class="bot-card" data-category="website">
+                    <div class="bot-card-header">
+                        <h3>📷 Instagram Phishing Page</h3>
+                        <div class="bot-card-price">₹80</div>
+                    </div>
+                    <div class="bot-card-body">
+                        <p class="bot-card-desc">Instagram phishing page for educational purposes</p>
+                    </div>
+                    <div class="bot-card-footer">
+                        <a href="https://wa.me/6285783858712" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        <a href="https://t.me/patelkrish_99" class="btn btn-buy"><i class="fas fa-shopping-cart"></i> Buy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials animate">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">TESTIMONIALS</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The Bot Maker is absolutely fantastic! It saved me so much time and effort. The customer support was also excellent."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">R</div>
+                        <div>
+                            <h4>Rahul Sharma</h4>
+                            <p>Bot Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "I purchased the Movie Bot and it's been a game-changer for my channel. The setup was smooth and it works perfectly."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">P</div>
+                        <div>
+                            <h4>Priya Patel</h4>
+                            <p>Channel Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The hosting bot is incredible! It made deploying my scripts so much easier. Highly recommended for developers."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">A</div>
+                        <div>
+                            <h4>Amit Kumar</h4>
+                            <p>Software Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="animate">
+        <div class="container">
+            <div class="section-title">
+                <h2>FREQUENTLY ASKED QUESTIONS</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do I purchase a bot? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        You can purchase any bot by clicking on the "Buy" button which will redirect you to our Telegram account. You can also use the "WhatsApp" button to contact us directly.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer discounts? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, we offer discounts on bulk purchases. Please message us on Telegram or WhatsApp to discuss your requirements and we'll provide you with the best possible price.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I get a demo before purchasing? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        For TBC bots, we have demo bots available that you can try. For script bots, we need to start them first, so please message us and we'll show you a demo.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you provide support after purchase? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, we provide full support after purchase. If you face any issues or have questions, our team is available to help you through Telegram or WhatsApp.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>KP BOT MARKET</h3>
+                    <p>Your one-stop destination for premium Telegram bots and services. We provide high-quality solutions to enhance your Telegram experience.</p>
+                    <div class="social-icons">
+                        <a href="https://t.me/patelkrish_99"><i class="fab fa-telegram"></i></a>
+                        <a href="https://wa.me/6285783858712"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#tbc-bots">TBC Bots</a></li>
+                        <li><a href="#script-bots">Script Bots</a></li>
+                        <li><a href="#websites">Websites</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fab fa-telegram"></i> Telegram: @patelkrish_99</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: +62 857-8385-8712</p>
+                    <p><i class="fas fa-robot"></i> Direct Buy: @KP_BOT_MARKET_BOT</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 KP BOT MARKET. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Category Filter Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const botCards = document.querySelectorAll('.bot-card');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const category = button.getAttribute('data-category');
+                    
+                    // Show/hide bots based on category
+                    botCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Scroll Animations
+            const animateElements = document.querySelectorAll('.animate');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Back to Top Button
+            const backToTopButton = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+
+            backToTopButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Create particle background
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 10 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 10;
+                const duration = Math.random() * 20 + 10;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                
+                particlesContainer.appendChild(particle);
+            }
+
+            // Add floating animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes float {
+                    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+                    25% { transform: translate(5px, 5px) rotate(5deg); }
+                    50% { transform: translate(10px, 0) rotate(0deg); }
+                    75% { transform: translate(5px, -5px) rotate(-5deg); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
